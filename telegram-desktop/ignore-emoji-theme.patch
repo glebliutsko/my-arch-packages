@@ -1,0 +1,25 @@
+diff --git a/Telegram/SourceFiles/data/data_peer.cpp b/Telegram/SourceFiles/data/data_peer.cpp
+index f91a4da29..293bf25e2 100644
+--- a/Telegram/SourceFiles/data/data_peer.cpp
++++ b/Telegram/SourceFiles/data/data_peer.cpp
+@@ -995,19 +995,7 @@ PeerId PeerData::groupCallDefaultJoinAs() const {
+ }
+ 
+ void PeerData::setThemeEmoji(const QString &emoticon) {
+-	if (_themeEmoticon == emoticon) {
+-		return;
+-	}
+-	if (Ui::Emoji::Find(_themeEmoticon) == Ui::Emoji::Find(emoticon)) {
+-		_themeEmoticon = emoticon;
+-		return;
+-	}
+-	_themeEmoticon = emoticon;
+-	if (!emoticon.isEmpty()
+-		&& !owner().cloudThemes().themeForEmoji(emoticon)) {
+-		owner().cloudThemes().refreshChatThemes();
+-	}
+-	session().changes().peerUpdated(this, UpdateFlag::ChatThemeEmoji);
++    return;
+ }
+ 
+ const QString &PeerData::themeEmoji() const {
