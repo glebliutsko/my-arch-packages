@@ -15,13 +15,13 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('gtk3: GTK environment integration'
             'webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz" 'ignore-emoji-theme.patch')
-sha512sums=('SKIP'
-            'SKIP')
+source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz" 'ignore-emoji-theme.patch' 'no-sponsor.patch')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd tdesktop-$pkgver-full
     patch --strip=1 --forward --input="${srcdir}/ignore-emoji-theme.patch" 
+    patch --strip=1 --forward --input="${srcdir}/no-sponsor.patch" 
 }
 
 build() {
