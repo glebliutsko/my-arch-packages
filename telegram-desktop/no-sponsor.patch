@@ -50,7 +50,7 @@ index cbddbc322..fec73305b 100644
 -		| (history->isChannel() ? MessageFlag::Post : MessageFlags(0))
 -		| MessageFlag::HasFromId
 -		| MessageFlag::IsSponsored
--		| MessageFlag::LocalHistoryEntry;
+-		| MessageFlag::Local;
 -	auto local = history->addNewLocalMessage(
 -		_session->data().nextLocalMessageId(),
 -		flags,
