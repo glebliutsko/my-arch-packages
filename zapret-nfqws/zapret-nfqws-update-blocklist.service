@@ -1,0 +1,11 @@
+[Unit]
+Description=Update RKN reestr
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zapret-nfqws-update-blocklist
+ExecStartPost=/usr/bin/systemctl try-restart zapret-nfqws.service
+
+[Install]
+WantedBy=multi-user.target

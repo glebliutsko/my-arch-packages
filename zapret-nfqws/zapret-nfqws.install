@@ -1,0 +1,6 @@
+#!/bin/bash
+
+post_install() {
+   echo "Upload blacklist"
+   /usr/bin/zapret-nfqws-update-blocklist
+}

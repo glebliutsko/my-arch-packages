@@ -1,0 +1,54 @@
+_pkgname=zapret-nfqws
+pkgname=${_pkgname}-git
+pkgver=r171.627b24f
+pkgrel=1
+pkgdesc='Bypass deep packet inspection.'
+arch=('any')
+url='https://github.com/bol-van/zapret'
+license=('GPL')
+depends=('systemd' 'curl')
+makedepends=('libnetfilter_queue' 'git')
+
+source=("$_pkgname::git+https://github.com/bol-van/zapret.git"
+        'zapret-nfqws-update-blocklist.sh'
+        'zapret-nfqws.service'
+        'zapret-nfqws-update-blocklist.service'
+        'zapret-nfqws-update-blocklist.timer'
+        'zapret-nfqws.sysusers'
+        'zapret-user-hosts.txt')
+md5sums=('SKIP'
+         '77b82e461affb5e2311cf93025d04127'
+         '3d28344705dee0e5ee135e2bda57621f'
+         '347a780688a15546fc818808b497b224'
+         'b7888ea3181b89fdc04e45a67f028f31'
+         'cecc8d4dee20c7e023fb2c86151412eb'
+         'd41d8cd98f00b204e9800998ecf8427e')
+
+install=zapret-nfqws.install
+
+backup=('etc/zapret-nfqws/zapret-user-hosts.txt')
+
+pkgver() {
+    cd "$_pkgname"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$_pkgname"
+    make
+}
+
+package() {
+    mkdir -p -m 755 "$pkgdir/var/lib/zapret-nfqws"
+    
+    install -Dm 644 "$srcdir/zapret-nfqws.sysusers" "$pkgdir/usr/lib/sysusers.d/zapret-nfqws.conf"
+    
+    install -Dm 644 "$srcdir/zapret-nfqws.service" "$pkgdir/usr/lib/systemd/system/zapret-nfqws.service"
+    install -Dm 644 "$srcdir/zapret-nfqws-update-blocklist.service" "$pkgdir/usr/lib/systemd/system/zapret-nfqws-update-blocklist.service"
+    install -Dm 644 "$srcdir/zapret-nfqws-update-blocklist.timer" "$pkgdir/usr/lib/systemd/system/zapret-nfqws-update-blocklist.timer"
+
+    install -Dm 644 "$srcdir/zapret-user-hosts.txt" "$pkgdir/etc/zapret-nfqws/zapret-user-hosts.txt"
+
+    install -Dm 755 "$srcdir/$_pkgname/binaries/my/nfqws" "$pkgdir/usr/bin/zapret-nfqws"
+    install -Dm 755 "$srcdir/zapret-nfqws-update-blocklist.sh" "$pkgdir/usr/bin/zapret-nfqws-update-blocklist"
+}
