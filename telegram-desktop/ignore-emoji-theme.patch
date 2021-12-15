@@ -1,8 +1,7 @@
-diff --git a/Telegram/SourceFiles/data/data_peer.cpp b/Telegram/SourceFiles/data/data_peer.cpp
-index f91a4da29..293bf25e2 100644
---- a/Telegram/SourceFiles/data/data_peer.cpp
-+++ b/Telegram/SourceFiles/data/data_peer.cpp
-@@ -995,19 +995,7 @@ PeerId PeerData::groupCallDefaultJoinAs() const {
+diff '--color=auto' -ruN a/Telegram/SourceFiles/data/data_peer.cpp b/Telegram/SourceFiles/data/data_peer.cpp
+--- a/Telegram/SourceFiles/data/data_peer.cpp	2021-12-08 08:35:03.000000000 +0400
++++ b/Telegram/SourceFiles/data/data_peer.cpp	2021-12-08 19:39:43.253991146 +0400
+@@ -1021,19 +1021,7 @@
  }
  
  void PeerData::setThemeEmoji(const QString &emoticon) {
