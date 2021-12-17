@@ -18,7 +18,7 @@ source=("$_pkgname::git+https://github.com/bol-van/zapret.git"
         'zapret-user-hosts.txt')
 md5sums=('SKIP'
          '77b82e461affb5e2311cf93025d04127'
-         '3d28344705dee0e5ee135e2bda57621f'
+         '470b35103a0914684105f5b1614fd64c'
          '347a780688a15546fc818808b497b224'
          'b7888ea3181b89fdc04e45a67f028f31'
          'cecc8d4dee20c7e023fb2c86151412eb'
