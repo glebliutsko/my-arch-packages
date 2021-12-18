@@ -1,0 +1,9 @@
+[Unit]
+Description=List updates are available
+After=network.target
+
+[Timer]
+OnCalendar=*-*-* *:0/10:00
+
+[Install]
+WantedBy=timers.target

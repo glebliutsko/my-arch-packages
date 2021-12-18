@@ -1,0 +1,19 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = *
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = List updates are available.
+When = PostTransaction
+Exec = /usr/bin/systemctl start update-list-updated-packages.service

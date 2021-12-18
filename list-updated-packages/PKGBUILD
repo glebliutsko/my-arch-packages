@@ -1,0 +1,24 @@
+pkgname=list-updated-packages
+pkgver=1.0
+pkgrel=1
+pkgdesc='Write a list of available updates to /run/listupdates'
+arch=('any')
+url='https://github.com/glebliutsko/my-arch-packages'
+license=('MIT')
+depends=('systemd' 'zsh' 'pacman-contrib')
+
+source=('update-list-updated-packages.sh'
+        'update-list-updated-packages.service'
+        'update-list-updated-packages.timer'
+        '99-update-list-updated-packages.hook')
+sha256sums=('e685b1294aaa40597029ff5638319c3c950ce5c798d5c07c9109681475d5df4a'
+            '112621d15a81a91b31b4237b488424d8ba2141606d00704109e2235fe3a11f37'
+            '50e63d8560a27217681cb5fd8318e04a7db70e89ef1c4c4d19521176f6615a69'
+            'c89987bf54168a70fb971abe4b48780c469a684801eed22bfc8838ca98f7bfab')
+
+package() {
+    install -Dm 755 "$srcdir/update-list-updated-packages.sh" "$pkgdir/usr/lib/update-list-updated-packages"
+    install -Dm 644 "$srcdir/update-list-updated-packages.service" "$pkgdir/usr/lib/systemd/system/update-list-updated-packages.service"
+    install -Dm 644 "$srcdir/update-list-updated-packages.timer" "$pkgdir/usr/lib/systemd/system/update-list-updated-packages.timer"
+    install -Dm 644 "$srcdir/99-update-list-updated-packages.hook" "$pkgdir/usr/share/libalpm/hooks/99-update-list-updated-packages.hook"
+}
