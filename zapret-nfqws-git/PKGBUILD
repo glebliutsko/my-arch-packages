@@ -18,8 +18,8 @@ source=("$_pkgname::git+https://github.com/bol-van/zapret.git"
         'config')
 sha256sums=('SKIP'
             '413753e7cd5a2c08ae113648cdaca594bfbc5dc17cfc8c112c46b5b6cb331536'
-            'f85f3b4c13c7985d4b883da26e68864cb059da0d5af94d3f460aa0fb927ee999'
-            '3efaf5728bf8f129748738a7a2a1635094a1676cae58553b3614f58681df8d8b'
+            '3e397d5dffe82ced050db55417a384077f20bbc558e861cd125c95df8aac9623'
+            '77f8cdbb02666a9b572544c6af42cf8b6c6d31e0177ac0ca3a911f52286f0634'
             '9c8872fc11d4ba434265ee77ddf58e4bfb682f28f77293ff84607590d6c496c7'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '3a89773bcea26b4d062a0c1480c940b3bcd39789b3e9534f2a194b0f3d84c9da')

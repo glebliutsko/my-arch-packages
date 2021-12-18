@@ -6,6 +6,8 @@ After=network.target network-online.target
 Type=oneshot
 
 ReadOnlyPaths=/
+InaccessiblePaths=/media
+InaccessiblePaths=/mnt
 ReadWritePaths=/var/lib/zapret-nfqws
 
 ProtectSystem=strict
@@ -21,6 +23,8 @@ ProtectHome=true
 
 SystemCallArchitectures=native
 SystemCallFilter=~@mount
+
+NoNewPrivileges=true
 
 ExecStart=/usr/lib/zapret-nfqws-update-blocklist
 ExecStartPost=/usr/bin/systemctl try-restart zapret-nfqws.service

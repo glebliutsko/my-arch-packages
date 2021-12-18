@@ -17,6 +17,8 @@ AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
 CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
 
 ReadOnlyPaths=/
+InaccessiblePaths=/media
+InaccessiblePaths=/mnt
 
 ProtectSystem=strict
 PrivateDevices=true
@@ -31,6 +33,8 @@ ProtectHome=true
 
 SystemCallArchitectures=native
 SystemCallFilter=~@mount
+
+NoNewPrivileges=true
 
 ExecStartPre=+iptables \
     -t mangle \
