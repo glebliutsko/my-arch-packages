@@ -4,22 +4,62 @@ After=iptables.service ip6tables.service network.target
 PartOf=iptables.service ip6tables.service
 
 [Service]
+EnvironmentFile=/etc/zapret-nfqws/config
+Environment=QUEUE_NUM=200
+Environment=MARK_PACKAGE=0x40000000
+
+DynamicUser=yes
+
 CPUSchedulingPolicy=fifo
 CPUSchedulingPriority=99
 
-ExecStartPre=iptables -t mangle -I POSTROUTING -o br0 -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 2:4 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+
+ReadOnlyPaths=/
+
+ProtectSystem=strict
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectProc=invisible
+ProtectKernelModules=true
+MemoryDenyWriteExecute=true
+
+PrivateTmp=true
+ProtectHome=true
+
+SystemCallArchitectures=native
+SystemCallFilter=~@mount
+
+ExecStartPre=+iptables \
+    -t mangle \
+    -I POSTROUTING \
+    -o ${Interface} \
+    -p tcp \
+    -m multiport --dports ${Ports} \
+    -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 2:4 \
+    -m mark ! --mark "${MARK_PACKAGE}/${MARK_PACKAGE}" \
+    -j NFQUEUE --queue-num ${QUEUE_NUM} --queue-bypass
 
 ExecStart=/usr/bin/zapret-nfqws \
-    --user=zapret-nfqws \
-    --qnum=200 \
+    --qnum=${QUEUE_NUM} \
     --dpi-desync=fake,disorder \
-    --dpi-desync-fwmark=0x40000000 \
+    --dpi-desync-fwmark=${MARK_PACKAGE} \
     --dpi-desync-ttl=4 \
     --hostlist=/var/lib/zapret-nfqws/zapret-hosts.txt
 
 Restart=always
 
-ExecStopPost=iptables -t mangle -D POSTROUTING -o br0 -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 2:4 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
+ExecStopPost=+iptables \
+    -t mangle \
+    -D POSTROUTING \
+    -o ${Interface} \
+    -p tcp \
+    -m multiport --dports ${Ports} \
+    -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 2:4 \
+    -m mark ! --mark "${MARK_PACKAGE}/${MARK_PACKAGE}" \
+    -j NFQUEUE --queue-num ${QUEUE_NUM} --queue-bypass
 
 [Install]
 WantedBy=multi-user.target

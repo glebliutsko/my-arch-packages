@@ -4,7 +4,25 @@ After=network.target network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/zapret-nfqws-update-blocklist
+
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/zapret-nfqws
+
+ProtectSystem=strict
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectProc=invisible
+ProtectKernelModules=true
+MemoryDenyWriteExecute=true
+
+PrivateTmp=true
+ProtectHome=true
+
+SystemCallArchitectures=native
+SystemCallFilter=~@mount
+
+ExecStart=/usr/lib/zapret-nfqws-update-blocklist
 ExecStartPost=/usr/bin/systemctl try-restart zapret-nfqws.service
 
 [Install]
