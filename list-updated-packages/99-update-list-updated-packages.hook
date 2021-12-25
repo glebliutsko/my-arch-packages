@@ -16,4 +16,4 @@ Target = *
 [Action]
 Description = List updates are available.
 When = PostTransaction
-Exec = /usr/bin/systemctl start update-list-updated-packages.service
+Exec = /usr/bin/systemctl start --no-block update-list-updated-packages.service

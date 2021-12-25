@@ -1,5 +1,5 @@
 pkgname=list-updated-packages
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Write a list of available updates to /run/listupdates'
 arch=('any')
@@ -14,8 +14,7 @@ source=('update-list-updated-packages.sh'
 sha256sums=('e685b1294aaa40597029ff5638319c3c950ce5c798d5c07c9109681475d5df4a'
             '112621d15a81a91b31b4237b488424d8ba2141606d00704109e2235fe3a11f37'
             '50e63d8560a27217681cb5fd8318e04a7db70e89ef1c4c4d19521176f6615a69'
-            'c89987bf54168a70fb971abe4b48780c469a684801eed22bfc8838ca98f7bfab')
-
+            '4918e2d56ab96ea648e1ea59de1be2e7d0b0f9913095b0b4a7999a5ec6391085')
 package() {
     install -Dm 755 "$srcdir/update-list-updated-packages.sh" "$pkgdir/usr/lib/update-list-updated-packages"
     install -Dm 644 "$srcdir/update-list-updated-packages.service" "$pkgdir/usr/lib/systemd/system/update-list-updated-packages.service"
