@@ -1,6 +1,6 @@
 _pkgname=zapret-nfqws
 pkgname=${_pkgname}-git
-pkgver=r285.bb7faca
+pkgver=r314.9a7d1e8
 pkgrel=1
 pkgdesc='Bypass deep packet inspection.'
 arch=('any')
