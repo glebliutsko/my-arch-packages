@@ -1,4 +1,4 @@
-_pkgname=zapret-nfqws
+_pkgname=my-zapret-nfqws
 pkgname=${_pkgname}-git
 pkgver=r416.a0d3e47
 pkgrel=1
