@@ -1,13 +1,13 @@
 _pkgname=my-zapret-nfqws
 pkgname=${_pkgname}-git
-pkgver=r440.6c31029
+pkgver=r451.f16e729
 pkgrel=1
 pkgdesc='Bypass deep packet inspection.'
 arch=('any')
 url='https://github.com/bol-van/zapret'
 license=('GPL')
-depends=('systemd' 'curl')
-makedepends=('libnetfilter_queue' 'git')
+depends=('systemd' 'curl' 'libnetfilter_queue')
+makedepends=('git')
 
 source=("$_pkgname::git+https://github.com/bol-van/zapret.git"
         'zapret-nfqws-update-blocklist.sh'
