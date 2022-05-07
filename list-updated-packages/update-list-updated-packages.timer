@@ -3,7 +3,8 @@ Description=List updates are available
 After=network.target
 
 [Timer]
-OnCalendar=*-*-* *:0/10:00
+OnCalendar=*-*-* *:0/30:00
+RandomizedDelaySec=5m
 
 [Install]
 WantedBy=timers.target

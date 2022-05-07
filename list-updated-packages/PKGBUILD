@@ -1,5 +1,5 @@
 pkgname=list-updated-packages
-pkgver=1.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Write a list of available updates to /run/listupdates'
 arch=('any')
@@ -14,7 +14,7 @@ source=('update-list-updated-packages.zsh'
         'count-updates-packages.zsh')
 sha256sums=('e685b1294aaa40597029ff5638319c3c950ce5c798d5c07c9109681475d5df4a'
             '112621d15a81a91b31b4237b488424d8ba2141606d00704109e2235fe3a11f37'
-            '50e63d8560a27217681cb5fd8318e04a7db70e89ef1c4c4d19521176f6615a69'
+            'fe72b4a06cce08db464499e874571bcddc913d008f7b5a9797719a6d3ccb60c1'
             '4918e2d56ab96ea648e1ea59de1be2e7d0b0f9913095b0b4a7999a5ec6391085'
             '293395dd74f1217fac15e6d243b6b76f4f7dada2c94bc4838887f035ca4d773c')
 
