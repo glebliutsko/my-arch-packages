@@ -1,0 +1,28 @@
+pkgname=uaviak-timetable-backuper
+
+pkgver=1.0.0
+pkgrel=1
+
+pkgdesc="Детектит изменения расписания на сайте УАвиаК\'а и сохроняет его"
+url='https://github.com/glebliutsko/uaviak-timetable-backuper'
+license=('MIT')
+
+arch=('any')
+license=('MIT')
+depends=('python' 'python-requests')
+makedepends=('python-poetry' 'python-build' 'python-installer' 'python-wheel')
+
+source=("https://github.com/glebliutsko/uaviak-timetable-backuper/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2b1dcabae53fc65415b8c0e3c9fb0d483ac736751117fd6d09a9661e362f28fb')
+
+_archive="$pkgname-$pkgver"
+
+build() {
+    cd $_archive
+    python -m build -wn
+}
+
+package() {
+    cd $_archive
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
