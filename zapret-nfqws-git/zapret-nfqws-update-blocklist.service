@@ -5,19 +5,21 @@ After=network.target network-online.target
 [Service]
 Type=oneshot
 
-ReadOnlyPaths=/
-InaccessiblePaths=/media
-InaccessiblePaths=/mnt
+ProtectSystem=strict
+InaccessiblePaths=/media /mnt /boot /efi /root
 ReadWritePaths=/var/lib/zapret-nfqws
 
-ProtectSystem=strict
 PrivateDevices=true
 ProtectKernelTunables=true
 ProtectControlGroups=true
 ProtectProc=invisible
 ProtectKernelModules=true
 MemoryDenyWriteExecute=true
-
+RestrictNamespaces=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectClock=true
+ProtectHostname=true
 PrivateTmp=true
 ProtectHome=true
 

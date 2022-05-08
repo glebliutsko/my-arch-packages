@@ -17,17 +17,19 @@ AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
 CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
 
 ReadOnlyPaths=/
-InaccessiblePaths=/media
-InaccessiblePaths=/mnt
+InaccessiblePaths=/media /mnt /efi /boot /root
 
-ProtectSystem=strict
 PrivateDevices=true
 ProtectKernelTunables=true
 ProtectControlGroups=true
 ProtectProc=invisible
 ProtectKernelModules=true
 MemoryDenyWriteExecute=true
-
+RestrictNamespaces=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectClock=true
+ProtectHostname=true
 PrivateTmp=true
 ProtectHome=true
 

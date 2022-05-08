@@ -1,6 +1,6 @@
 _pkgname=my-zapret-nfqws
 pkgname=${_pkgname}-git
-pkgver=r490.5e27ac9
+pkgver=r493.aa231a1
 pkgrel=1
 pkgdesc='Bypass deep packet inspection.'
 arch=('any')
@@ -18,8 +18,8 @@ source=("$_pkgname::git+https://github.com/bol-van/zapret.git"
         'config')
 sha256sums=('SKIP'
             '413753e7cd5a2c08ae113648cdaca594bfbc5dc17cfc8c112c46b5b6cb331536'
-            '3e397d5dffe82ced050db55417a384077f20bbc558e861cd125c95df8aac9623'
-            '77f8cdbb02666a9b572544c6af42cf8b6c6d31e0177ac0ca3a911f52286f0634'
+            'e953b93fa632ac98e471f736461174dbd581d885c59bfdb544ce3ed61a6f70ee'
+            '54e28550b455ebea5e2a253c9266776061a49b96e23462cd3da6c7b6a39de3b1'
             '9c8872fc11d4ba434265ee77ddf58e4bfb682f28f77293ff84607590d6c496c7'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '3a89773bcea26b4d062a0c1480c940b3bcd39789b3e9534f2a194b0f3d84c9da')
