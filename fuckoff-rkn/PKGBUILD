@@ -1,0 +1,53 @@
+pkgname=fuckoff-rkn
+pkgver=r493.aa231a1
+pkgrel=1
+pkgdesc='Bypass deep packet inspection.'
+arch=('any')
+url='https://github.com/bol-van/zapret'
+license=('GPL')
+depends=('systemd' 'curl' 'libnetfilter_queue')
+makedepends=('git')
+
+source=("$pkgname::git+https://github.com/bol-van/zapret.git"
+        'rkn-blocklist-update.sh'
+        'fuckoff-rkn.service'
+        'rkn-blocklist-update.service'
+        'rkn-blocklist-update.timer'
+        'hosts.txt'
+        'config')
+sha256sums=('SKIP'
+            'd9056fa85643cc9ab19de9ff67ca3da01938da5edecce26494fd364d40ee660c'
+            '710918f27f1906df6639805b923976995b8cfdf8e3c24344b8a8512c5bfbefce'
+            'd9ce420dae94c9337f9a62c7faf79973eb4323ad9bf613839f45d7136debaa29'
+            '6b6d899bf60aff7eb0f088b903e733e17bf99ad7de54f92224b66c338d606675'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '3a89773bcea26b4d062a0c1480c940b3bcd39789b3e9534f2a194b0f3d84c9da')
+
+install=fuckoff-rkn.install
+
+backup=('etc/fuckoff-rkn/hosts.txt'
+        'etc/fuckoff-rkn/config')
+
+pkgver() {
+    cd "$pkgname"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$pkgname"
+    make
+}
+
+package() {
+    mkdir -p -m 755 "$pkgdir/var/lib/fuckoff-rkn"
+    
+    install -Dm 644 "$srcdir/fuckoff-rkn.service" "$pkgdir/usr/lib/systemd/system/fuckoff-rkn.service"
+    install -Dm 644 "$srcdir/rkn-blocklist-update.service" "$pkgdir/usr/lib/systemd/system/rkn-blocklist-update.service"
+    install -Dm 644 "$srcdir/rkn-blocklist-update.timer" "$pkgdir/usr/lib/systemd/system/rkn-blocklist-update.timer"
+
+    install -Dm 644 "$srcdir/hosts.txt" "$pkgdir/etc/fuckoff-rkn/hosts.txt"
+    install -Dm 644 "$srcdir/config" "$pkgdir/etc/fuckoff-rkn/config"
+
+    install -Dm 755 "$srcdir/$pkgname/binaries/my/nfqws" "$pkgdir/usr/bin/fuckoff-rkn"
+    install -Dm 755 "$srcdir/rkn-blocklist-update.sh" "$pkgdir/usr/lib/rkn-blocklist-update"
+}

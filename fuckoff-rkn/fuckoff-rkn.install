@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 update_blocklist(){
    echo "Upload blacklist"
-   /usr/lib/zapret-nfqws-update-blocklist > /dev/null 2> /dev/null
+   /usr/lib/rkn-blocklist-update > /dev/null 2> /dev/null
 }
 
 post_install() {

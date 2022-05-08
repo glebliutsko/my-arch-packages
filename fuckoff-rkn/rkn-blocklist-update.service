@@ -7,7 +7,7 @@ Type=oneshot
 
 ProtectSystem=strict
 InaccessiblePaths=/media /mnt /boot /efi /root
-ReadWritePaths=/var/lib/zapret-nfqws
+ReadWritePaths=/var/lib/fuckoff-rkn
 
 PrivateDevices=true
 ProtectKernelTunables=true
@@ -28,8 +28,8 @@ SystemCallFilter=~@mount
 
 NoNewPrivileges=true
 
-ExecStart=/usr/lib/zapret-nfqws-update-blocklist
-ExecStartPost=/usr/bin/systemctl try-restart zapret-nfqws.service
+ExecStart=/usr/lib/rkn-blocklist-update
+ExecStartPost=/usr/bin/systemctl try-restart fuckoff-rkn.service
 
 [Install]
 WantedBy=multi-user.target

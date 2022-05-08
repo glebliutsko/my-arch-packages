@@ -1,10 +1,10 @@
 [Unit]
-Description=DPI zapret
+Description=Fuckoff rkn
 After=iptables.service ip6tables.service network.target
 PartOf=iptables.service ip6tables.service
 
 [Service]
-EnvironmentFile=/etc/zapret-nfqws/config
+EnvironmentFile=/etc/fuckoff-rkn/config
 Environment=QUEUE_NUM=200
 Environment=MARK_PACKAGE=0x40000000
 
@@ -48,12 +48,12 @@ ExecStartPre=+iptables \
     -m mark ! --mark "${MARK_PACKAGE}/${MARK_PACKAGE}" \
     -j NFQUEUE --queue-num ${QUEUE_NUM} --queue-bypass
 
-ExecStart=/usr/bin/zapret-nfqws \
+ExecStart=/usr/bin/fuckoff-rkn \
     --qnum=${QUEUE_NUM} \
     --dpi-desync=fake,disorder \
     --dpi-desync-fwmark=${MARK_PACKAGE} \
     --dpi-desync-ttl=4 \
-    --hostlist=/var/lib/zapret-nfqws/zapret-hosts.txt
+    --hostlist=/var/lib/fuckoff-rkn/hosts.txt
 
 Restart=always
 

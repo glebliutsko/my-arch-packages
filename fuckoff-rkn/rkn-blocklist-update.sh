@@ -1,9 +1,9 @@
 #!/bin/sh
-ZHOSTLIST='/var/lib/zapret-nfqws/zapret-hosts.txt'
-ZHOSTUSERLIST='/etc/zapret-nfqws/zapret-user-hosts.txt'
+ZHOSTLIST='/var/lib/fuckoff-rkn/hosts.txt'
+ZHOSTUSERLIST='/etc/fuckoff-rkn/hosts.txt'
 
-TMPDIR="$(mktemp -t "zapret.XXXXXXXXXXXXXX" -d)"
-ZREESTR="$TMPDIR/zapret.txt"
+TMPDIR="$(mktemp -t "fuckoff-rkn.XXXXXXXXXXXXXX" -d)"
+ZREESTR="$TMPDIR/hosts.txt"
 ZURL="https://raw.githubusercontent.com/zapret-info/z-i/master/dump.csv"
 
 curl -k --fail --max-time 600 --connect-timeout 5 --retry 3 --max-filesize 251658240 "$ZURL" > "$ZREESTR" ||
