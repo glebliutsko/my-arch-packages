@@ -10,19 +10,17 @@ license=('MIT')
 arch=('any')
 license=('MIT')
 depends=('python' 'python-requests')
-makedepends=('python-poetry' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-poetry' 'python-build' 'python-installer' 'python-wheel' 'git')
 
-source=("https://github.com/glebliutsko/uaviak-timetable-backuper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b1dcabae53fc65415b8c0e3c9fb0d483ac736751117fd6d09a9661e362f28fb')
-
-_archive="$pkgname-$pkgver"
+source=("uaviak-timetable-backuper::git+https://github.com/glebliutsko/uaviak-timetable-backuper.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-    cd $_archive
-    python -m build -wn
+    cd $pkgname
+    python -m build --no-isolation --wheel --config-setting /dev/null
 }
 
 package() {
-    cd $_archive
+    cd $pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
