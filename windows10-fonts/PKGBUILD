@@ -3,8 +3,8 @@ pkgname=windows10-fonts
 pkgver=1.0.0
 pkgrel=1
 
-pkgdesc="Детектит изменения расписания на сайте УАвиаК\'а и сохроняет его"
-url='https://github.com/glebliutsko/my-arch-packages'
+pkgdesc="Шрифты из Windows 10."
+url='https://github.com/glebliutsko/my-arch-packages/tree/master/windows10-fonts'
 
 arch=('any')
 depends=( )
