@@ -1,0 +1,20 @@
+pkgname=windows10-fonts
+
+pkgver=1.0.0
+pkgrel=1
+
+pkgdesc="Детектит изменения расписания на сайте УАвиаК\'а и сохроняет его"
+url='https://github.com/glebliutsko/my-arch-packages'
+
+arch=('any')
+depends=( )
+makedepends=('zstd')
+
+source=('windows10-fonts.tar.zst')
+sha256sums=('56bc96317a12f9084c8262784824f4af8da494c4be78d98a8c28d048452fc823')
+
+package() {
+    for font_file in *.{ttf,TTF}; do
+        install -Dm 644 "$font_file" -t "$pkgdir/usr/share/fonts/windows10-fonts"
+    done
+}
