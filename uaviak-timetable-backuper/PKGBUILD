@@ -11,7 +11,7 @@ arch=('any')
 depends=('python' 'python-requests')
 makedepends=('python-poetry' 'python-build' 'python-installer' 'python-wheel' 'git')
 
-source=("uaviak-timetable-backuper::git+https://github.com/glebliutsko/uaviak-timetable-backuper.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/glebliutsko/uaviak-timetable-backuper.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
