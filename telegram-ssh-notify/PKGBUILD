@@ -1,7 +1,7 @@
 # Maintainer: Gleb Liutsko <gleb@liutsko.ru>
 pkgname=telegram-ssh-notify
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 
 pkgdesc='Notification about SSH connection in telegram.'
@@ -9,7 +9,7 @@ url='https://github.com/glebliutsko/telegram-ssh-notify'
 license=('MIT')
 
 source=("https://github.com/glebliutsko/telegram-ssh-notify/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d52514005f3ea701e09ba49c9d6eafe476e0c63702223aba89e4a46a5e5c8b03')
+sha256sums=('12b3ad3cdafc01ae1d7039b4a8cdff4d4d519bcb8631826c9f620555d9c76224')
 
 arch=('any')
 depends=('systemd' 'zsh' 'jq')
