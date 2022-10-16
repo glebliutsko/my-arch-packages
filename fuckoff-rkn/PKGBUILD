@@ -1,5 +1,5 @@
 pkgname=fuckoff-rkn
-pkgver=r556.36dc24a
+pkgver=r576.8ae38be
 pkgrel=1
 pkgdesc='Bypass deep packet inspection.'
 arch=('any')
